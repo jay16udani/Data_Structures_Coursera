@@ -74,7 +74,6 @@ void Siftdown(int i, vector <Threads> &mythreads)
 
 void ChangePriority(int i, long long int new_priority, vector <Threads> &mythreads)
 {
-	long long int old_priority = mythreads[0].start_time;
 	mythreads[0].start_time = new_priority;
 	
 	Siftdown(0,mythreads);
