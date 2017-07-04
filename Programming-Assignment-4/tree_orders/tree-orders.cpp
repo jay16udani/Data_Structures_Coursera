@@ -26,50 +26,76 @@ public:
       cin >> key[i] >> left[i] >> right[i];
     }
   }
-
-
-  vector <int> in_order() {
-    vector<int> result;
-    // Finish the implementation
-    // You may need to add a new recursive method to do that
-
-    return result;
+  
+  void in_order_traversal(int index)
+  {
+	  if(left[index] == -1 && right[index] == -1)
+	  {
+		  cout << key[index] << " ";		  
+		  return;
+	  }
+	  if(left[index]!=-1)
+		in_order_traversal(left[index]);
+	
+	  cout << key[index] << " ";
+	  
+	  if(right[index]!=-1)
+		in_order_traversal(right[index]);
+  }
+  
+  void pre_order_traversal(int index)
+  {
+	  cout << key[index] << " ";
+	  if(left[index] == -1 && right[index] == -1)
+		  return;
+	  if(left[index] != -1)
+		pre_order_traversal(left[index]);
+	
+	  if(right[index] != -1)
+		pre_order_traversal(right[index]);
+  }  
+  
+  void post_order_traversal(int index)
+  {
+	  if(left[index] == -1 && right[index] == -1)
+	  {
+		  cout << key[index] << " ";
+		  return;
+	  }
+	  
+	  if(left[index] != -1)
+		  post_order_traversal(left[index]);
+	  
+	  if(right[index] != -1)
+		  post_order_traversal(right[index]);
+	  
+	  cout << key[index] << " ";
   }
 
-  vector <int> pre_order() {
-    vector<int> result;    
-    // Finish the implementation
-    // You may need to add a new recursive method to do that
-    
-    return result;
+
+  void in_order() {
+	in_order_traversal(0);
+	cout << "\n";
   }
 
-  vector <int> post_order() {
-    vector<int> result;
-    // Finish the implementation
-    // You may need to add a new recursive method to do that
-    
-    return result;
+  void pre_order() {
+	  pre_order_traversal(0);
+	  cout << "\n";
+  }
+
+  void post_order() {
+	  post_order_traversal(0);
+	  cout << "\n";
   }
 };
-
-void print(vector <int> a) {
-  for (size_t i = 0; i < a.size(); i++) {
-    if (i > 0) {
-      cout << ' ';
-    }
-    cout << a[i];
-  }
-  cout << '\n';
-}
 
 int main_with_large_stack_space() {
   ios_base::sync_with_stdio(0);
   TreeOrders t;
   t.read();
-  print(t.in_order());
-  print(t.pre_order());
-  print(t.post_order());
+  t.in_order();
+  t.pre_order();
+  t.post_order();
   return 0;
 }
 
